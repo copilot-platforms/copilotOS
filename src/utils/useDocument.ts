@@ -1,4 +1,4 @@
-export function usePageData() {
+export function useDocument() {
     return {
         document: `
             <article>
