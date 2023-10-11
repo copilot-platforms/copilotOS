@@ -8,9 +8,10 @@ import { EditorContextValue, EditorProvider, PureEditorContent } from "@tiptap/r
 import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
-import type { PutBlobResult } from "@vercel/blob";
+import { postImage } from "../actions/postImage";
 import { useCallback, useRef } from "react";
 import { useDropzone } from "react-dropzone";
+
 export default function Edit({
   document,
   name,
@@ -36,21 +37,16 @@ export default function Edit({
   const editorRef = useRef<EditorContextValue['editor']| null >(null);
 
   const handleUpload = async (file: File) => {
-    const response = await fetch(`/api/tiptap/upload?filename=${file.name}`, {
-      method: "POST",
-      body: file,
-    });
-
-    const newBlob = (await response.json()) as PutBlobResult;
-
-    return newBlob.url;
+    const form = new FormData();
+    form.append("body", file);
+    const { url } = await postImage(form);
+    return url;
   };
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     // Do something with the files
     const file = acceptedFiles[0];
     const url = await handleUpload(file);
-    console.info(url);
     if (!url) {
       return;
     }
@@ -61,6 +57,7 @@ export default function Edit({
       },
     }).run();
   }, []);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     noClick: true,
@@ -79,7 +76,9 @@ export default function Edit({
         }}
         content={document}
         extensions={extensions}
-        slotBefore={<TiptapMenuBar onUpload={handleUpload} />}
+        slotBefore={<TiptapMenuBar name={
+          name
+        } onUpload={handleUpload} />}
       >
         <input {...getInputProps()} />
       </EditorProvider>

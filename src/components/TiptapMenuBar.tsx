@@ -1,6 +1,7 @@
 import { useCurrentEditor } from "@tiptap/react";
 import cx from "classnames";
 import { useRef } from "react";
+import { ClientUrl } from "./ClientUrl";
 const style = {
   width: "100%",
   display: "flex",
@@ -9,8 +10,10 @@ const style = {
 };
 export const TiptapMenuBar = ({
   onUpload,
+  name,
 }: {
   onUpload: (file: File) => Promise<string | undefined>;
+  name: string;
 }) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const { editor } = useCurrentEditor();
@@ -170,6 +173,7 @@ export const TiptapMenuBar = ({
         />
         <label htmlFor="upload">image</label>
       </button>
+      <ClientUrl name={name}/>
     </div>
   );
 };
