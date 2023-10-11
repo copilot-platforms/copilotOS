@@ -1,5 +1,5 @@
 import { Client, Company, CopilotAPI } from '@/utils/copilotApiUtils'
-import { usePageData } from '@/utils/useDocument'
+import { useDocument } from '@/utils/useDocument'
 import Image from 'next/image'
 
 type SearchParams = { [key: string]: string | string[] | undefined }
@@ -25,7 +25,7 @@ async function getContent(searchParams: SearchParams) {
 
 export default async function Page({ searchParams }:  { searchParams: SearchParams }) {
   const data = await getContent(searchParams)
-  const { document } = usePageData();
+  const { document } = useDocument();
   console.log({ document });
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
