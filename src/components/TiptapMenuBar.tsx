@@ -1,17 +1,19 @@
-import { useCurrentEditor } from "@tiptap/react"
-import cx from 'classnames'
+import { useCurrentEditor } from "@tiptap/react";
+import cx from "classnames";
 import { useRef } from "react";
 const style = {
   width: "100%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-}
-export const TiptapMenuBar = ({onUpload}: {
-  onUpload: (file: File) => Promise<string | undefined>
+};
+export const TiptapMenuBar = ({
+  onUpload,
+}: {
+  onUpload: (file: File) => Promise<string | undefined>;
 }) => {
-    const inputFileRef = useRef<HTMLInputElement>(null);
-  const { editor } = useCurrentEditor()
+  const inputFileRef = useRef<HTMLInputElement>(null);
+  const { editor } = useCurrentEditor();
 
   const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
@@ -22,8 +24,8 @@ export const TiptapMenuBar = ({onUpload}: {
     if (!url) {
       return;
     }
-    editor?.chain().focus().setImage({src: url}).run();
-  }
+    editor?.chain().focus().setImage({ src: url }).run();
+  };
 
   if (!editor) {
     return null;
@@ -155,15 +157,19 @@ export const TiptapMenuBar = ({onUpload}: {
         redo
       </button>
 
-
-
-     
       <button className="tiptap-menu-btn">
-           <input   id="upload" hidden
-        accept="image/*" name="file" ref={inputFileRef} type="file" onChange={onFileChange} required />
-<label htmlFor="upload">image</label>
+        <input
+          id="upload"
+          hidden
+          accept="image/*"
+          name="file"
+          ref={inputFileRef}
+          type="file"
+          onChange={onFileChange}
+          required
+        />
+        <label htmlFor="upload">image</label>
       </button>
- 
     </div>
   );
 };

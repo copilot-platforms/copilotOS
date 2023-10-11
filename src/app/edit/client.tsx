@@ -7,8 +7,8 @@ import ListItem from "@tiptap/extension-list-item";
 import { EditorProvider } from "@tiptap/react";
 import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
-import Image from '@tiptap/extension-image'
-import type { PutBlobResult } from '@vercel/blob';
+import Image from "@tiptap/extension-image";
+import type { PutBlobResult } from "@vercel/blob";
 export default function Edit({
   document,
   name,
@@ -29,30 +29,26 @@ export default function Edit({
         keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
       },
     }),
-     Image
+    Image,
   ];
 
   const handleUpload = async (file: any) => {
-           const response = await fetch(
-            `/api/tiptap/upload?filename=${file.name}`,
-            {
-              method: 'POST',
-              body: file,
-            },
-          );
- 
-          const newBlob = (await response.json()) as PutBlobResult;
- 
-          return newBlob.url;
-  }
+    const response = await fetch(`/api/tiptap/upload?filename=${file.name}`, {
+      method: "POST",
+      body: file,
+    });
 
+    const newBlob = (await response.json()) as PutBlobResult;
+
+    return newBlob.url;
+  };
 
   return (
     <EditorProvider
       onUpdate={({ editor }) => putDocument(name, editor.getHTML())}
       content={document}
       extensions={extensions}
-      slotBefore={<TiptapMenuBar onUpload={handleUpload}  />}
+      slotBefore={<TiptapMenuBar onUpload={handleUpload} />}
     >
       {null}
     </EditorProvider>
