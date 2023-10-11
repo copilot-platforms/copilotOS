@@ -36,6 +36,8 @@ export default function Edit({
       content={document}
       extensions={extensions}
       slotBefore={<TiptapMenuBar />}
-    ></EditorProvider>
+    >
+      {null}
+    </EditorProvider>
   );
 }
