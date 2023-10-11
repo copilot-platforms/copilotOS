@@ -1,12 +1,25 @@
 import { useCurrentEditor } from "@tiptap/react";
 import cx from "classnames";
+import Image from "next/image";
 import { useRef } from "react";
-const style = {
-  width: "100%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-};
+import styled from "styled-components";
+
+const MenuBarContainer = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  color: #fff;
+  padding: 5px;
+  gap: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+`;
 export const TiptapMenuBar = ({
   onUpload,
 }: {
@@ -32,112 +45,157 @@ export const TiptapMenuBar = ({
   }
 
   return (
-    <div style={style}>
+    <MenuBarContainer>
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("bold"),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("bold"),
+          },
+        )}
       >
-        bold
+        <Image width={20} height={20} src="/bold.svg" alt="bold" />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("italic"),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("italic"),
+          },
+        )}
       >
-        italic
+        <Image width={20} height={20} src="/italic.svg" alt="bold" />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("strike"),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("strike"),
+          },
+        )}
       >
-        strike
+        <Image width={20} height={20} src="/strike.svg" alt="bold" />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleCode().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("code"),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("code"),
+            "opacity-50 cursor-not-allowed": !editor
+              .can()
+              .chain()
+              .focus()
+              .toggleCode()
+              .run(),
+          },
+        )}
       >
-        code
+        <Image width={20} height={20} src="/code.svg" alt="bold" />
       </button>
       <button
         onClick={() => editor.chain().focus().setParagraph().run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("paragraph"),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("paragraph"),
+          },
+        )}
       >
-        paragraph
+        P
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("heading", { level: 1 }),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("heading", { level: 1 }),
+          },
+        )}
       >
         h1
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("heading", { level: 2 }),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("heading", { level: 2 }),
+          },
+        )}
       >
         h2
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("heading", { level: 3 }),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("heading", { level: 3 }),
+          },
+        )}
       >
         h3
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("heading", { level: 5 }),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("heading", { level: 5 }),
+          },
+        )}
       >
         h4
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("heading", { level: 5 }),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("heading", { level: 5 }),
+          },
+        )}
       >
         h5
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("heading", { level: 6 }),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("heading", { level: 6 }),
+          },
+        )}
       >
         h6
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("bulletlist"),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("bulletlist"),
+          },
+        )}
       >
-        bullet list
+        <Image width={20} height={20} src="/list.svg" alt="bold" />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={cx("tiptap-menu-btn", {
-          "is-active": editor.isActive("orderedList"),
-        })}
+        className={cx(
+          "bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center",
+          {
+            "is-active": editor.isActive("orderedList"),
+          },
+        )}
       >
         ordered list
       </button>
@@ -145,19 +203,19 @@ export const TiptapMenuBar = ({
       <button
         onClick={() => editor.chain().focus().undo().run()}
         disabled={!editor.can().chain().focus().undo().run()}
-        className="tiptap-menu-btn"
+        className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
       >
         undo
       </button>
       <button
-        className="tiptap-menu-btn"
+        className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
       >
         redo
       </button>
 
-      <button className="tiptap-menu-btn">
+      <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
         <input
           id="upload"
           hidden
@@ -170,6 +228,6 @@ export const TiptapMenuBar = ({
         />
         <label htmlFor="upload">image</label>
       </button>
-    </div>
+    </MenuBarContainer>
   );
 };

@@ -3,11 +3,11 @@ import { Error as ErrorComponent } from "@/components/Error";
 import { fetchDocument } from "@/app/actions/fetchDocument";
 import { API_KEYS } from "@/app/actions/getApiKey";
 import { getContent } from "@/app/actions/fetchCopilotData";
-import { Client } from '@/utils/copilotApiUtils';
+import { Client } from "@/utils/copilotApiUtils";
 
 const isValidField = (val: string): val is keyof Client => {
-  return ['id','givenName','familyName','email','companyId'].includes(val);
-}
+  return ["id", "givenName", "familyName", "email", "companyId"].includes(val);
+};
 
 export default async function View({
   searchParams,
@@ -24,7 +24,7 @@ export default async function View({
     return <ErrorComponent msg="Could not find Copilot data" />;
   const document = await fetchDocument(data.me.id, data.me.portalName);
 
-  const regex = new RegExp('{{client\.[a-zA-Z0-9]*}}', 'g');
+  const regex = new RegExp("{{client.[a-zA-Z0-9]*}}", "g");
   const matches = document.match(regex) || [];
   var finalDoc = document;
   for (const match of matches) {
