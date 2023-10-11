@@ -1,7 +1,7 @@
 import { View as ViewComponent } from '@/components/View'
-import { fetchDocumentById } from '@/app/actions/fetchDocumentById';
+import { fetchDocument } from '@/app/actions/fetchDocument';
 
-export default async function View() {
-    const document = await fetchDocumentById('testing123');
+export default async function View({ searchParams }:  { searchParams: SearchParams }) {
+    const document = await fetchDocument(searchParams.name as PageName);
     return <ViewComponent document={document} />;
 }

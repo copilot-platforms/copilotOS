@@ -1,8 +1,6 @@
 import { Client, Company, CopilotAPI } from '@/utils/copilotApiUtils'
 import Image from 'next/image'
 
-type SearchParams = { [key: string]: string | string[] | undefined }
-
 async function getContent(searchParams: SearchParams) {
   if (!process.env.COPILOT_API_KEY) {
     throw new Error('Missing COPILOT_API_KEY')
