@@ -16,17 +16,6 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); */
-}
-
-
 /* Basic editor styles */
 .tiptap {
   outline: none;
@@ -91,9 +80,9 @@ body {
   }
 
   pre {
-    background: #0D0D0D;
-    color: #FFF;
-    font-family: 'JetBrainsMono', monospace;
+    background: #0d0d0d;
+    color: #fff;
+    font-family: "JetBrainsMono", monospace;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
 
@@ -112,17 +101,17 @@ body {
 
   blockquote {
     padding-left: 1rem;
-    border-left: 2px solid rgba(#0D0D0D, 0.1);
+    border-left: 2px solid rgba(#0d0d0d, 0.1);
   }
 
   hr {
     border: none;
-    border-top: 2px solid rgba(#0D0D0D, 0.1);
+    border-top: 2px solid rgba(#0d0d0d, 0.1);
     margin: 2rem 0;
   }
 }
 
-.tiptap-menu-btn{
+.tiptap-menu-btn {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 0.25rem;
   padding: 0.5rem;
@@ -130,12 +119,11 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 
-  &:hover{
+  &:hover {
     background-color: rgba(0, 0, 0, 0.2);
   }
 }
 
-.is-active{
+.is-active {
   background-color: rgba(0, 0, 0, 0.2);
 }
-

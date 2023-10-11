@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fmt": "npx prettier . --write"
   },
   "dependencies": {
     "@tiptap/extension-color": "^2.1.11",

@@ -1,16 +1,21 @@
-'use client'
+"use client";
 
-import StarterKit from '@tiptap/starter-kit'
-import { Color } from '@tiptap/extension-color'
-import TextStyle from '@tiptap/extension-text-style'
-import ListItem from '@tiptap/extension-list-item'
+import StarterKit from "@tiptap/starter-kit";
+import { Color } from "@tiptap/extension-color";
+import TextStyle from "@tiptap/extension-text-style";
+import ListItem from "@tiptap/extension-list-item";
+import { EditorProvider } from "@tiptap/react";
+import { TiptapMenuBar } from "@/components/TiptapMenuBar";
+import { putDocument } from "../actions/putDocument";
 import Image from '@tiptap/extension-image'
-import {  EditorProvider } from '@tiptap/react'
-import { TiptapMenuBar } from '@/components/TiptapMenuBar'
-import { putDocument } from '../actions/putDocument'
 import type { PutBlobResult } from '@vercel/blob';
-
-export default function Edit({ document, name }: { document: string, name: PageName }) {
+export default function Edit({
+  document,
+  name,
+}: {
+  document: string;
+  name: PageName;
+}) {
   const extensions = [
     Color.configure({ types: [TextStyle.name, ListItem.name] }),
     // TextStyle.configure({ types: [ListItem.name] }),
@@ -24,7 +29,7 @@ export default function Edit({ document, name }: { document: string, name: PageN
         keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
       },
     }),
-     Image,
+     Image
   ];
 
   const handleUpload = async (file: any) => {
@@ -44,11 +49,12 @@ export default function Edit({ document, name }: { document: string, name: PageN
 
   return (
     <EditorProvider
-      onUpdate={({editor}) => putDocument(name, editor.getHTML())}
+      onUpdate={({ editor }) => putDocument(name, editor.getHTML())}
       content={document}
       extensions={extensions}
       slotBefore={<TiptapMenuBar onUpload={handleUpload}  />}
     >
+      {null}
     </EditorProvider>
-  )
+  );
 }

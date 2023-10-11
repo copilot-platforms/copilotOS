@@ -1,33 +1,35 @@
-import { Client, Company, CopilotAPI } from '@/utils/copilotApiUtils'
-import Image from 'next/image'
+import { Client, Company, CopilotAPI } from "@/utils/copilotApiUtils";
+import Image from "next/image";
 
 async function getContent(searchParams: SearchParams) {
   if (!process.env.COPILOT_API_KEY) {
-    throw new Error('Missing COPILOT_API_KEY')
+    throw new Error("Missing COPILOT_API_KEY");
   }
 
-  const copilotAPI = new CopilotAPI(process.env.COPILOT_API_KEY)
-  const result: { client?: Client, company?: Company } = {};
+  const copilotAPI = new CopilotAPI(process.env.COPILOT_API_KEY);
+  const result: { client?: Client; company?: Company } = {};
 
-  if (searchParams.clientId && typeof searchParams.clientId === 'string') {
-    result.client = await copilotAPI.getClient(searchParams.clientId)
+  if (searchParams.clientId && typeof searchParams.clientId === "string") {
+    result.client = await copilotAPI.getClient(searchParams.clientId);
   }
 
-  if (searchParams.companyId && typeof searchParams.companyId === 'string') {
-    result.company = await copilotAPI.getCompany(searchParams.companyId)
+  if (searchParams.companyId && typeof searchParams.companyId === "string") {
+    result.company = await copilotAPI.getCompany(searchParams.companyId);
   }
-  
+
   return result;
 }
 
-export default async function Page({ searchParams }:  { searchParams: SearchParams }) {
-  const data = await getContent(searchParams)
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Welcome to the custom app&nbsp;
-          <code className="font-mono font-bold">{data.client ? data.client.givenName : data.company?.name}</code>,
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
@@ -36,7 +38,7 @@ export default async function Page({ searchParams }:  { searchParams: SearchPara
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/copilot_icon.png"
               alt="Copilot Icon"
@@ -62,5 +64,5 @@ export default async function Page({ searchParams }:  { searchParams: SearchPara
         />
       </div>
     </main>
-  )
+  );
 }
