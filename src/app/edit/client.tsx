@@ -44,7 +44,7 @@ export default function Edit({
       onUpdate={({ editor }) => putDocument(name, editor.getHTML())}
       content={document}
       extensions={extensions}
-      slotBefore={<TiptapMenuBar onUpload={handleUpload} />}
+      slotBefore={<TiptapMenuBar onUpload={handleUpload} name={name} />}
     >
       {null}
     </EditorProvider>
