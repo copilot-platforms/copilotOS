@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export function ClientUrl({ name }: { name: string }) {
     let defaulMsg = 'Copy to clipboard';
-    const url = `https://copilot-qs46ep3wp-copilot-platforms.vercel.app/view?name=${name}`
+    const url = `${window.location.origin}/view?name=${name}`
     const [tooltipMsg, setMsg] = useState(defaulMsg); 
     const copy = () => {
         initFlowbite();
