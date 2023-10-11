@@ -15,7 +15,7 @@ export default async function Edit({
       <ErrorComponent msg="You do not have the correct API credentials to run this custom app" />
     );
   const data = await getContent(searchParams, apiKey);
-  if (!data.me) return <ErrorComponent msg="Could not find Copilot data" />;
+  if (!data.me?.id) return <ErrorComponent msg="Could not find Copilot data" />;
   const document =
     (await fetchDocument(data.me.id, data.me.portalName)) ?? "Hello, World!";
   return (
