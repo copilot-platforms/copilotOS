@@ -75,7 +75,7 @@ export default function Edit({
       <EditorProvider
         onUpdate={({ editor }) => putDocument(name, editor.getHTML())}
         onCreate={({ editor }) => {
-          editorRef.current = editor;
+          editorRef.current = editor as EditorContextValue['editor'];
         }}
         content={document}
         extensions={extensions}
