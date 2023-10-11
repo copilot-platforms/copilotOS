@@ -9,6 +9,7 @@
 ### Connecting with Copilot
 
 If you'd like to host a custom page for yourself, follow these steps:
+
 1. Generate a production API key.
 2. Add your name to the PageName type in `src/types.d.ts`
 3. Add an entry to the `API_KEYS` object with your name as the key and your API key as the value in `src/app/actions/getApiKey.ts`
