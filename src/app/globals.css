@@ -44,6 +44,10 @@ body {
     padding: 0 1rem;
   }
 
+  ol {
+    list-style: decimal;
+  }
+
   ul {
     list-style: disc;
   }
