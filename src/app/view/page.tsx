@@ -7,6 +7,6 @@ export default async function View({ searchParams }:  { searchParams: SearchPara
     const apiKey = API_KEYS[searchParams.name as PageName];
     const data = await getContent(searchParams, apiKey);
     if (!data.me?.portalName) return null;
-    const document = await fetchDocument(apiKey, data.me.portalName);
+    const document = await fetchDocument(data.me.id, data.me.portalName);
     return <ViewComponent document={document} />;
 }
