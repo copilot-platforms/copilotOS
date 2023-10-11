@@ -1,3 +1,5 @@
+# CopilotOS
+
 This is a base Copilot Custom app built using [Next.js](https://nextjs.org/) and project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
