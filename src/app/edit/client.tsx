@@ -9,6 +9,7 @@ import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
 import type { PutBlobResult } from "@vercel/blob";
+import { File } from "buffer";
 export default function Edit({
   document,
   name,
@@ -32,10 +33,10 @@ export default function Edit({
     Image,
   ];
 
-  const handleUpload = async (file: any) => {
+  const handleUpload = async (file: File) => {
     const response = await fetch(`/api/tiptap/upload?filename=${file.name}`, {
       method: "POST",
-      body: file,
+      body: file ,
     });
 
     const newBlob = (await response.json()) as PutBlobResult;
