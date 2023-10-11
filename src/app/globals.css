@@ -26,10 +26,6 @@ body {
     rgb(var(--background-start-rgb)); */
 }
 
-/* .editor-container {
-  height: 500px;
-} */
-
 
 /* Basic editor styles */
 .tiptap {
@@ -48,6 +44,10 @@ body {
     padding: 0 1rem;
   }
 
+  ul {
+    list-style: disc;
+  }
+
   h1,
   h2,
   h3,
@@ -55,6 +55,25 @@ body {
   h5,
   h6 {
     line-height: 1.1;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  h4 {
+    font-size: 1.25rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  h6 {
+    font-size: 0.875rem;
   }
 
   code {
@@ -106,3 +125,8 @@ body {
     background-color: rgba(0, 0, 0, 0.2);
   }
 }
+
+.is-active{
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
