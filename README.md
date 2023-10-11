@@ -1,39 +1,15 @@
 # CopilotOS
 
-This is a base Copilot Custom app built using [Next.js](https://nextjs.org/) and project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
-The easiest way to get started is to fork this repo. Once forked, you will need to deploy the app and add it to Copilot.
-
-### Deploying
-
-The easiest way to deploy this custom app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
-
-- Create a new project in your Vercel account. Note: create an account if you don't have one using github to automatically import repos.
-- Select the forked repo in Import Git Repository
-- In environment variables add COPILOT_API_KEY. You can find your API key in Copilot under Settings > API. Note: You will need to be an admin to create an API Key.
+1. Make sure you've got npx installed: `npm install -g npx`
+2. Run `yarn`
+3. Run `yarn dev` to develop locally
 
 ### Connecting with Copilot
 
-Once your app is deployed you will get a url. E.g. custom-app-fork-neil.vercel.app. Using this url you can [add a custom app](https://www.copilot.com/guide/other-apps#don't-see-your-app-h3) in Copilot.
-
-You will now be able to use the app in Copilot.
-
-## Developing App
-
-Clone your forked app locally and run the development server.
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If you'd like to host a custom page for yourself, follow these steps:
+1. Generate a production API key.
+2. Add your name to the PageName type in `src/types.d.ts`
+3. Add an entry to the `API_KEYS` object with your name as the key and your API key as the value in `src/app/actions/getApiKey.ts`
+4. Once you've restarted (or redeployed) Then visit /edit?name={yourName}
