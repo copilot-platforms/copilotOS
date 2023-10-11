@@ -1,15 +1,20 @@
-'use client'
+"use client";
 
-import StarterKit from '@tiptap/starter-kit'
-import { Color } from '@tiptap/extension-color'
-import TextStyle from '@tiptap/extension-text-style'
-import ListItem from '@tiptap/extension-list-item'
-import {  EditorProvider } from '@tiptap/react'
-import { TiptapMenuBar } from '@/components/TiptapMenuBar'
-import { putDocument } from '../actions/putDocument'
+import StarterKit from "@tiptap/starter-kit";
+import { Color } from "@tiptap/extension-color";
+import TextStyle from "@tiptap/extension-text-style";
+import ListItem from "@tiptap/extension-list-item";
+import { EditorProvider } from "@tiptap/react";
+import { TiptapMenuBar } from "@/components/TiptapMenuBar";
+import { putDocument } from "../actions/putDocument";
 
-
-export default function Edit({ document, name }: { document: string, name: PageName }) {
+export default function Edit({
+  document,
+  name,
+}: {
+  document: string;
+  name: PageName;
+}) {
   const extensions = [
     Color.configure({ types: [TextStyle.name, ListItem.name] }),
     // TextStyle.configure({ types: [ListItem.name] }),
@@ -25,14 +30,14 @@ export default function Edit({ document, name }: { document: string, name: PageN
     }),
   ];
 
-
   return (
     <EditorProvider
-      onUpdate={({editor}) => putDocument(name, editor.getHTML())}
+      onUpdate={({ editor }) => putDocument(name, editor.getHTML())}
       content={document}
       extensions={extensions}
-      slotBefore={<TiptapMenuBar  />}
+      slotBefore={<TiptapMenuBar />}
     >
+      {null}
     </EditorProvider>
-  )
+  );
 }

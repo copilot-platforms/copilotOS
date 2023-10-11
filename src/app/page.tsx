@@ -1,26 +1,30 @@
-import { Client, Company, CopilotAPI } from '@/utils/copilotApiUtils'
-import Image from 'next/image'
+import { Client, Company, CopilotAPI } from "@/utils/copilotApiUtils";
+import Image from "next/image";
 
 async function getContent(searchParams: SearchParams) {
   if (!process.env.COPILOT_API_KEY) {
-    throw new Error('Missing COPILOT_API_KEY')
+    throw new Error("Missing COPILOT_API_KEY");
   }
 
-  const copilotAPI = new CopilotAPI(process.env.COPILOT_API_KEY)
-  const result: { client?: Client, company?: Company } = {};
+  const copilotAPI = new CopilotAPI(process.env.COPILOT_API_KEY);
+  const result: { client?: Client; company?: Company } = {};
 
-  if (searchParams.clientId && typeof searchParams.clientId === 'string') {
-    result.client = await copilotAPI.getClient(searchParams.clientId)
+  if (searchParams.clientId && typeof searchParams.clientId === "string") {
+    result.client = await copilotAPI.getClient(searchParams.clientId);
   }
 
-  if (searchParams.companyId && typeof searchParams.companyId === 'string') {
-    result.company = await copilotAPI.getCompany(searchParams.companyId)
+  if (searchParams.companyId && typeof searchParams.companyId === "string") {
+    result.company = await copilotAPI.getCompany(searchParams.companyId);
   }
-  
+
   return result;
 }
 
-export default async function Page({ searchParams }:  { searchParams: SearchParams }) {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: SearchParams;
+}) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -34,7 +38,7 @@ export default async function Page({ searchParams }:  { searchParams: SearchPara
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               src="/copilot_icon.png"
               alt="Copilot Icon"
@@ -60,5 +64,5 @@ export default async function Page({ searchParams }:  { searchParams: SearchPara
         />
       </div>
     </main>
-  )
+  );
 }
