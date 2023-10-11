@@ -1,14 +1,29 @@
 import { useCurrentEditor } from "@tiptap/react"
 import cx from 'classnames'
-
+import { useRef,  } from "react";
 const style = {
   width : '100%',
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
 }
-export const TiptapMenuBar = () => {
+export const TiptapMenuBar = ({onUpload}: {
+  onUpload: (file: File) => Promise<string | undefined>
+}) => {
+    const inputFileRef = useRef<HTMLInputElement>(null);
   const { editor } = useCurrentEditor()
+
+  const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return;
+    }
+    const file = e.target.files[0];
+    const url = await onUpload(file);
+    if (!url) {
+      return;
+    }
+    editor?.chain().focus().setImage({src: url}).run();
+  }
 
   if (!editor) {
     return null
@@ -178,6 +193,15 @@ export const TiptapMenuBar = () => {
         }
       >
         redo
+      </button>
+
+
+
+     
+      <button className="tiptap-menu-btn">
+           <input   id="upload" hidden
+        accept="image/*" name="file" ref={inputFileRef} type="file" onChange={onFileChange} required />
+<label htmlFor="upload">image</label>
       </button>
  
     </div>
