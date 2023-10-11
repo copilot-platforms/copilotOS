@@ -8,7 +8,7 @@ import { EditorProvider } from "@tiptap/react";
 import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
-import type { PutBlobResult } from "@vercel/blob";
+import { postImage } from "../actions/postImage";
 export default function Edit({
   document,
   name,
@@ -33,14 +33,10 @@ export default function Edit({
   ];
 
   const handleUpload = async (file: File) => {
-    const response = await fetch(`/api/tiptap/upload?filename=${file.name}`, {
-      method: "POST",
-      body: file ,
-    });
-
-    const newBlob = (await response.json()) as PutBlobResult;
-
-    return newBlob.url;
+    const form = new FormData();
+    form.append("body", file);
+    const { url } = await postImage(form);
+    return url;
   };
 
   return (
