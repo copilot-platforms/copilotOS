@@ -1,4 +1,4 @@
-export function useDocument() {
+export async function fetchDocument() {
     return {
         document: `
             <article>
