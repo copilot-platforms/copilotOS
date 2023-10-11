@@ -9,7 +9,6 @@ import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
 import type { PutBlobResult } from "@vercel/blob";
-import { File } from "buffer";
 export default function Edit({
   document,
   name,
