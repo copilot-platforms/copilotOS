@@ -3,7 +3,14 @@
   outline: none;
   padding: 0.5rem;
   height: 100vh;
-  width: 50vw;
+  width: 100%;
+  max-width: 800px;
+
+  // mobile media query
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
+
   margin: 0 auto;
   > * + * {
     margin-top: 0.75em;
