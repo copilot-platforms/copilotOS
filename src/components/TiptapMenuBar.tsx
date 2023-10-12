@@ -35,6 +35,7 @@ const MenuBarContainer = styled.div`
 export const TiptapMenuBar = ({
   onUpload,
   name,
+  editable
 }: {
   onUpload: (file: File) => Promise<string | undefined>;
   name: string;
@@ -69,7 +70,7 @@ export const TiptapMenuBar = ({
     editor?.chain().focus().setImage({ src: url }).run();
   };
 
-  if (!editor) {
+  if (!editor || !editable) {
     return null;
   }
 

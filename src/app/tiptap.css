@@ -156,14 +156,8 @@
     padding: 1rem 0;
     overflow-x: auto;
   }
-}
 
-.resize-cursor {
-  cursor: ew-resize;
-  cursor: col-resize;
-}
-
-  .callout-container {
+   .callout-container {
     background: #FAF594;
     border: 3px solid #0D0D0D;
     border-radius: 0.5rem;
@@ -191,6 +185,15 @@
     border: 2px dashed #0D0D0D20;
     border-radius: 0.5rem;
   }
+  
+}
+
+.resize-cursor {
+  cursor: ew-resize;
+  cursor: col-resize;
+}
+
+ 
 
 
 .is-active {
