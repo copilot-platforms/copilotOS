@@ -5,14 +5,16 @@ import Youtube from "@tiptap/extension-youtube";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import ListItem from "@tiptap/extension-list-item";
-import { EditorProvider, Node } from "@tiptap/react";
+import { EditorProvider } from "@tiptap/react";
 import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
 import { postImage } from "../actions/postImage";
 import CalloutExtension from "@/components/tiptap/CalloutExtension";
-
-
+import Table from "@tiptap/extension-table";
+import TableRow from "@tiptap/extension-table-row";
+import TableHeader from "@tiptap/extension-table-header";
+import TableCell from "@tiptap/extension-table-cell";
 
 export default function Edit({
   document,
@@ -38,7 +40,13 @@ export default function Edit({
     Youtube.configure({
       inline: true,
     }),
-    CalloutExtension
+    CalloutExtension,
+    Table.configure({
+      resizable: true,
+    }),
+    TableRow,
+    TableHeader,
+    TableCell,
   ];
 
   const handleUpload = async (file: File) => {
