@@ -9,6 +9,7 @@ import { EditorProvider } from "@tiptap/react";
 import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
+import Link from '@tiptap/extension-link'
 import { postImage } from "../actions/postImage";
 import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
@@ -45,6 +46,10 @@ export default function Edit({
     TableRow,
     TableHeader,
     TableCell,
+    Link.configure({
+      openOnClick: true,
+      validate: href => /^https?:\/\//.test(href),
+    }),
   ];
 
   const handleUpload = async (file: File) => {

@@ -1,7 +1,7 @@
 import { useCurrentEditor } from "@tiptap/react";
 import cx from "classnames";
-import { useRef } from "react";
 import styled from "styled-components";
+import { useCallback, useRef } from "react";
 import { ClientUrl } from "./ClientUrl";
 import {
   MdImage,
@@ -31,6 +31,7 @@ const MenuBarContainer = styled.div`
   z-index: 1;
   background-color: #000;
 `;
+
 export const TiptapMenuBar = ({
   onUpload,
   name,
@@ -40,6 +41,21 @@ export const TiptapMenuBar = ({
 }) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const { editor } = useCurrentEditor();
+  const setLink = useCallback(() => {
+    const previousUrl = editor?.getAttributes('link').href
+    let url = window.prompt('URL', previousUrl)
+    if (url === null) {
+      return
+    }
+    if (url === '') {
+      editor?.chain().focus().extendMarkRange('link').unsetLink().run()
+      return
+    }
+    if (!(/^https?:\/\//.test(url))) {
+      url = `//${url}`;
+    }
+   editor?.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+  }, [editor])
 
   const onFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
@@ -95,6 +111,11 @@ export const TiptapMenuBar = ({
       >
         <MdStrikethroughS />
       </button>
+      <button onClick={setLink} className={cx("tiptap-menu-btn", {
+          "is-active": editor.isActive("link"),
+        })}>
+         link
+       </button>
       <button
         onClick={() => editor.chain().focus().toggleCode().run()}
         disabled={!editor.can().chain().focus().toggleCode().run()}
