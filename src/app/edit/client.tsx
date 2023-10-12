@@ -10,6 +10,7 @@ import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
 import { postImage } from "../actions/postImage";
+import CalloutExtension from "@/components/tiptap/CalloutExtension";
 import Table from "@tiptap/extension-table";
 import TableRow from "@tiptap/extension-table-row";
 import TableHeader from "@tiptap/extension-table-header";
@@ -39,6 +40,7 @@ export default function Edit({
     Youtube.configure({
       inline: true,
     }),
+    CalloutExtension,
     Table.configure({
       resizable: true,
     }),

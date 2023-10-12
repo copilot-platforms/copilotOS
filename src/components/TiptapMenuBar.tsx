@@ -255,6 +255,12 @@ export const TiptapMenuBar = ({
           <MdImage />
         </label>
       </button>
+
+      <button
+      onClick={() => {
+        editor.chain().focus().insertContent('<callout><p>Callout</p></callout>').run()
+      }}
+      >callout</button>
       <ClientUrl name={name} />
     </MenuBarContainer>
   );
