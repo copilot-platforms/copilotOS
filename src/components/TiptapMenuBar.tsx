@@ -39,6 +39,7 @@ export const TiptapMenuBar = ({
 }: {
   onUpload: (file: File) => Promise<string | undefined>;
   name: string;
+  editable: boolean;
 }) => {
   const inputFileRef = useRef<HTMLInputElement>(null);
   const { editor } = useCurrentEditor();
