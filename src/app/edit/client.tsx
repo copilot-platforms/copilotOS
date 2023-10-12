@@ -10,6 +10,11 @@ import { TiptapMenuBar } from "@/components/TiptapMenuBar";
 import { putDocument } from "../actions/putDocument";
 import Image from "@tiptap/extension-image";
 import { postImage } from "../actions/postImage";
+import Table from "@tiptap/extension-table";
+import TableRow from "@tiptap/extension-table-row";
+import TableHeader from "@tiptap/extension-table-header";
+import TableCell from "@tiptap/extension-table-cell";
+
 export default function Edit({
   document,
   name,
@@ -34,6 +39,12 @@ export default function Edit({
     Youtube.configure({
       inline: true,
     }),
+    Table.configure({
+      resizable: true,
+    }),
+    TableRow,
+    TableHeader,
+    TableCell,
   ];
 
   const handleUpload = async (file: File) => {
