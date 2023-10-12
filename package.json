@@ -23,7 +23,9 @@
     "next": "latest",
     "postcss-nesting": "^12.0.1",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-icons": "^4.11.0",
+    "styled-components": "^6.0.8"
   },
   "devDependencies": {
     "@types/node": "latest",
