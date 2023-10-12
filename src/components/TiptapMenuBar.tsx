@@ -55,7 +55,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("bold"),
+            "bg-gray-400": editor.isActive("bold"),
           },
         )}
       >
@@ -67,7 +67,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("italic"),
+            "bg-gray-400": editor.isActive("italic"),
           },
         )}
       >
@@ -79,7 +79,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-bl-400 text-white-800 py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("strike"),
+            "bg-gray-400": editor.isActive("strike"),
           },
         )}
       >
@@ -91,7 +91,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("code"),
+            "bg-gray-400": editor.isActive("code"),
             "opacity-50 cursor-not-allowed": !editor
               .can()
               .chain()
@@ -108,7 +108,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("paragraph"),
+            "bg-gray-400": editor.isActive("paragraph"),
           },
         )}
       >
@@ -119,7 +119,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("heading", { level: 1 }),
+            "bg-gray-400": editor.isActive("heading", { level: 1 }),
           },
         )}
       >
@@ -130,7 +130,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("heading", { level: 2 }),
+            "bg-gray-400": editor.isActive("heading", { level: 2 }),
           },
         )}
       >
@@ -141,7 +141,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("heading", { level: 3 }),
+            "bg-gray-400": editor.isActive("heading", { level: 3 }),
           },
         )}
       >
@@ -152,7 +152,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("heading", { level: 5 }),
+            "bg-gray-400": editor.isActive("heading", { level: 5 }),
           },
         )}
       >
@@ -163,7 +163,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("heading", { level: 5 }),
+            "bg-gray-400": editor.isActive("heading", { level: 5 }),
           },
         )}
       >
@@ -174,7 +174,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("heading", { level: 6 }),
+            "bg-gray-400": editor.isActive("heading", { level: 6 }),
           },
         )}
       >
@@ -185,7 +185,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("bulletlist"),
+            "bg-gray-400": editor.isActive("bulletlist"),
           },
         )}
       >
@@ -196,7 +196,7 @@ export const TiptapMenuBar = ({
         className={cx(
           "bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center",
           {
-            "is-active": editor.isActive("orderedList"),
+            "bg-gray-400": editor.isActive("orderedList"),
           },
         )}
       >
