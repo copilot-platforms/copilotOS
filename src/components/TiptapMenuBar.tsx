@@ -27,6 +27,7 @@ const MenuBarContainer = styled.div`
   gap: 5px;
   position: sticky;
   top: 10px;
+  margin-bottom: 10px;
   z-index: 1;
   background-color: #000;
 `;
