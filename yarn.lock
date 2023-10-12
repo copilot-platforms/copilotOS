@@ -1493,6 +1493,11 @@
   resolved "https://registry.npmjs.org/@tiptap/extension-text/-/extension-text-2.1.11.tgz"
   integrity sha512-Iey0EXYv9079+lbHMvZtLc6XcYfKrq++msEXuFFNHxvL0i/XzndhGf+qlDhLROLgEtDiiTqzOBBwFCGlFjbDow==
 
+"@tiptap/extension-youtube@^2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@tiptap/extension-youtube/-/extension-youtube-2.1.12.tgz#21f4e68f466d3db1fb73f32dee4be2de353da235"
+  integrity sha512-Kr/sGESmWDNCKHEgbpAFCZJgvGYBuFNGUUY1eIxXRSz3w7sxS+cQ8xQ0+7jD2f2BVaJgdy7kf/V0wQ6ocGdHbw==
+
 "@tiptap/pm@^2.1.11":
   version "2.1.11"
   resolved "https://registry.npmjs.org/@tiptap/pm/-/pm-2.1.11.tgz"

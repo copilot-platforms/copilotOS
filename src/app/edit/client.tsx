@@ -1,6 +1,7 @@
 "use client";
 
 import StarterKit from "@tiptap/starter-kit";
+import Youtube from "@tiptap/extension-youtube";
 import { Color } from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import ListItem from "@tiptap/extension-list-item";
@@ -30,6 +31,9 @@ export default function Edit({
       },
     }),
     Image,
+    Youtube.configure({
+      inline: true,
+    }),
   ];
 
   const handleUpload = async (file: File) => {
