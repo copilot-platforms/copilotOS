@@ -27,7 +27,7 @@ export default function Edit({
 }: {
   document: string;
   name: PageName;
-  editable: boolean;
+  editable?: boolean;
 }) {
   const extensions = [
     Color.configure({ types: [TextStyle.name, ListItem.name] }),
