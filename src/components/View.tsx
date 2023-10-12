@@ -1,8 +1,9 @@
-export function View({ document }: { document: string }) {
+'use client'
+import React from 'react'
+import Edit from '@/app/edit/client';
+
+export function View({ document, name }: { document: string, name: PageName }) {
   return (
-    <article
-      className="tiptap"
-      dangerouslySetInnerHTML={{ __html: document }}
-    />
+    <Edit editable={false} document={document} name={name}/>
   );
 }

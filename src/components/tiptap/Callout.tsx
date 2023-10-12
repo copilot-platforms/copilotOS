@@ -6,7 +6,7 @@ export const Callout =  () => {
     <NodeViewWrapper className="callout-container">
       <span className="label" contentEditable={false}>Callout</span>
 
-      <NodeViewContent className="content" />
+      <NodeViewContent as="div" className="content"  />
     </NodeViewWrapper>
   )
 }

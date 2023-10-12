@@ -33,5 +33,5 @@ export default async function View({
       finalDoc = finalDoc.replace(match, data.client[field].toString());
     }
   }
-  return <ViewComponent document={finalDoc} />;
+  return <ViewComponent document={finalDoc} name={searchParams.name as PageName} />;
 }

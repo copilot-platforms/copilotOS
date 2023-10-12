@@ -23,9 +23,11 @@ import TableCell from "@tiptap/extension-table-cell";
 export default function Edit({
   document,
   name,
+  editable = true,
 }: {
   document: string;
   name: PageName;
+  editable?: boolean;
 }) {
   const extensions = [
     Color.configure({ types: [TextStyle.name, ListItem.name] }),
@@ -92,15 +94,16 @@ export default function Edit({
       }
     >
       <EditorProvider
+        editable={editable}
         onUpdate={({ editor }) => putDocument(name, editor.getHTML())}
         onCreate={({ editor }) => {
           editorRef.current = editor as EditorContextValue['editor'];
         }}
         content={document}
         extensions={extensions}
-        slotBefore={<TiptapMenuBar name={
+        slotBefore={ <TiptapMenuBar editable={editable} name={
           name
-        } onUpload={handleUpload} />}
+        } onUpload={handleUpload} /> }
       >
         <input {...getInputProps()} />
       </EditorProvider>
