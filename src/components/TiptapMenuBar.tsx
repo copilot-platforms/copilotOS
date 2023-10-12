@@ -3,7 +3,16 @@ import cx from "classnames";
 import { useRef } from "react";
 import styled from "styled-components";
 import { ClientUrl } from "./ClientUrl";
-import { MdImage, MdRedo, MdUndo, MdFormatBold, MdList, MdStrikethroughS, MdFormatItalic } from "react-icons/md";
+import {
+  MdImage,
+  MdRedo,
+  MdUndo,
+  MdFormatBold,
+  MdList,
+  MdStrikethroughS,
+  MdFormatItalic,
+  MdTableView,
+} from "react-icons/md";
 
 const MenuBarContainer = styled.div`
   width: fit-content;
@@ -59,7 +68,7 @@ export const TiptapMenuBar = ({
           },
         )}
       >
-        <MdFormatBold/>
+        <MdFormatBold />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -71,7 +80,7 @@ export const TiptapMenuBar = ({
           },
         )}
       >
-       <MdFormatItalic/>
+        <MdFormatItalic />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -83,7 +92,7 @@ export const TiptapMenuBar = ({
           },
         )}
       >
-        <MdStrikethroughS/>
+        <MdStrikethroughS />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleCode().run()}
@@ -101,7 +110,7 @@ export const TiptapMenuBar = ({
           },
         )}
       >
-        {'</>'}
+        {"</>"}
       </button>
       <button
         onClick={() => editor.chain().focus().setParagraph().run()}
@@ -189,7 +198,7 @@ export const TiptapMenuBar = ({
           },
         )}
       >
-        <MdList/>
+        <MdList />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
@@ -200,7 +209,7 @@ export const TiptapMenuBar = ({
           },
         )}
       >
-        <MdList/>
+        <MdList />
       </button>
 
       <button
@@ -208,14 +217,26 @@ export const TiptapMenuBar = ({
         disabled={!editor.can().chain().focus().undo().run()}
         className="bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center"
       >
-        <MdUndo/>
+        <MdUndo />
       </button>
       <button
         className="bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center"
         onClick={() => editor.chain().focus().redo().run()}
         disabled={!editor.can().chain().focus().redo().run()}
       >
-        <MdRedo/>
+        <MdRedo />
+      </button>
+      <button
+        className="bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center"
+        onClick={() =>
+          editor
+            .chain()
+            .focus()
+            .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+            .run()
+        }
+      >
+        <MdTableView />
       </button>
 
       <button className="bg-black-300 hover:bg-gray-400 text-white-800 text-xs py-2 px-4 rounded inline-flex items-center">
@@ -229,10 +250,11 @@ export const TiptapMenuBar = ({
           onChange={onFileChange}
           required
         />
-        <label htmlFor="upload"><MdImage/></label>
+        <label htmlFor="upload">
+          <MdImage />
+        </label>
       </button>
       <ClientUrl name={name} />
     </MenuBarContainer>
   );
 };
-
